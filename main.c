@@ -7,6 +7,7 @@
 
 static const uint I2C_MASTER_SDA_PIN = 2;
 static const uint I2C_MASTER_SCL_PIN = 3;
+//test delete later
 
 int main() {
     stdio_init_all();
