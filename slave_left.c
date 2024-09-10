@@ -1,8 +1,8 @@
 #include "slave.h"
 #include "common.h"
 
-#define ROWS 2
-#define COLS 2
+#define ROWS 6
+#define COLS 4
 uint_fast8_t matrix[ROWS];
 
 uint_fast8_t col_pins [COLS] = {15, 14, 13, 12};

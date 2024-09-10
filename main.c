@@ -20,22 +20,22 @@ int main() {
     gpio_set_function(I2C_SLAVE_SCL_PIN, GPIO_FUNC_I2C);
     gpio_pull_up(I2C_SLAVE_SCL_PIN);
 
-    uint br = i2c_init(i2c1, I2C_BUS_SPEED);
+    uint br = i2c_init(i2c0, I2C_BUS_SPEED);
      
      for (size_t i = 0; i < 10; i++)
      {
-        printf("%u\n", br);
+        printf("I2C bus speed %u\n", br);
         sleep_ms(100);
      }
      
 
     while (true) {
         printf("-------------\n");
-        for (uint8_t r = 0; r < 2; r++){
-            int wr = i2c_write_timeout_us(i2c1, SLAVE_I2C_ADDRESS_LEFT, &r, 1, false, 1000000);
+        for (uint8_t r = 0; r < 5; r++){
+            int wr = i2c_write_timeout_us(i2c0, SLAVE_I2C_ADDRESS_RIGHT, &r, 1, false, 1000000);
             //printf("wr %i\n", wr);
             uint8_t read;
-            int rd = i2c_read_timeout_us(i2c1, SLAVE_I2C_ADDRESS_LEFT, &read, 1, false, 1000000);
+            int rd = i2c_read_timeout_us(i2c0, SLAVE_I2C_ADDRESS_RIGHT, &read, 1, false, 1000000);
             //printf("rd %i\n", rd);
             printf("%u\n", read);
             sleep_ms(100);

@@ -3,7 +3,7 @@
 
 #include "pico/stdlib.h"
 
-#define DEBUG false
+#define DEBUG true
 
 #define I2C_TIMEOUT_US 100000
 #define I2C_BUS_SPEED 1000000

@@ -72,8 +72,9 @@ void run_slave(uint8_t i2c_slave_address, uint_fast8_t* matrix_local, uint_fast8
     }
 
 #if DEBUG == true
-    gpio_init(18);
-    gpio_set_dir(18, GPIO_OUT);
+    gpio_init(25);
+    gpio_set_dir(25, GPIO_OUT);
+    gpio_put(25, 1);
 #endif
 
     multicore_launch_core1(matrix_scan);
