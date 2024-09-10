@@ -14,7 +14,7 @@ static uint_fast8_t* matrix;
 static uint_fast8_t* col_pins;
 static uint_fast8_t* row_pins;
 
-static void i2c1_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event) {
+static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event) {
     switch (event) {
     case I2C_SLAVE_REQUEST: // master is requesting data
         read_row = i2c_read_byte_raw(i2c);
@@ -87,8 +87,8 @@ void run_slave(uint8_t i2c_slave_address, uint_fast8_t* matrix_local, uint_fast8
     gpio_set_function(I2C_SLAVE_SCL_PIN, GPIO_FUNC_I2C);
     gpio_pull_up(I2C_SLAVE_SCL_PIN);
 
-    i2c_init(i2c1, I2C_BUS_SPEED);
-    i2c_slave_init(i2c1, i2c_slave_address, &i2c1_slave_handler);
+    i2c_init(i2c0, I2C_BUS_SPEED);
+    i2c_slave_init(i2c0, i2c_slave_address, &i2c_slave_handler);
 
     while (true) {
         tight_loop_contents();
